@@ -47,43 +47,33 @@ namespace TicTacToe.Classes
 
             Use any and all pre-existing methods in this program to help construct the method logic. 
              */
-			bool winner = CheckForWinner(Board);
-			Player currentPlayer = NextPlayer();
-			int turns = 0;
-			while (winner == false && turns != 10)
-            {
+			bool winner = LookForAWinner(Board);
+			Player activePlayer = NextPlayer();
+			int turn = 0;
+			while (winner == false && turn < 10) //Be sure to keep track of the number of turns that have been taken to determine if a draw is required and make sure that the game continues while there are unmarked spots on the board.
+			{
 				Board.DisplayBoard();
-				currentPlayer.TakeTurn(Board);
-				winner = CheckForWinner(Board);
+				activePlayer.TakeTurn(Board);
+				winner = LookForAWinner(Board);
 				SwitchPlayer();
-				currentPlayer = NextPlayer();
-				turns++;
-				if (turns == 9)
-                {
+				activePlayer = NextPlayer();
+				turn++;
+				if (turn == 9)
+				{
 					Board.DisplayBoard();
-					currentPlayer.Name = "Draw";
-					turns++;
-					
-                }
-            }
-			//if (currentPlayer.Name == "Draw")
-            //{
-				//Console.WriteLine("Draw");
-				//return currentPlayer;
-            //}
-			//else
-			//Console.WriteLine($"Winner {currentPlayer.Name}");
-			return currentPlayer;
-			
+					activePlayer.Name = "Draw";
+					turn++;
+				}
+			}
+			return activePlayer;
 		}
-
 
 		/// <summary>
 		/// Check if winner exists
 		/// </summary>
 		/// <param name="board">current state of the board</param>
 		/// <returns>if winner exists</returns>
-		public bool CheckForWinner(Board board)
+		public bool LookForAWinner(Board board)
 		{
 			int[][] winners = new int[][]
 			{
@@ -114,14 +104,12 @@ namespace TicTacToe.Classes
 				// TODO:  Determine a winner has been reached. 
 				// return true if a winner has been reached. 
 				if ($"{a}{b}{c}" == "XXX" || $"{a}{b}{c}" == "OOO")
-                {
+				{
 					return true;
-                }
+				}
 			}
-
 			return false;
 		}
-
 
 		/// <summary>
 		/// Determine next player
@@ -139,10 +127,10 @@ namespace TicTacToe.Classes
 		{
 			if (PlayerOne.IsTurn)
 			{
-              
+
 				PlayerOne.IsTurn = false;
 
-              
+
 				PlayerTwo.IsTurn = true;
 			}
 			else

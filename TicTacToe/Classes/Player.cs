@@ -5,8 +5,8 @@ using System.Text;
 
 namespace TicTacToe.Classes
 {
-    class Player
-    {
+	class Player
+	{
 		public string Name { get; set; }
 		/// <summary>
 		/// P1 is X and P2 will be O
@@ -51,23 +51,23 @@ namespace TicTacToe.Classes
 			}
 		}
 
-	
+
 		public void TakeTurn(Board board)
 		{
 			IsTurn = true;
-			
+
 			Console.WriteLine($"{Name} it is your turn");
-			prompt:
+		prompt:
 			Position position = GetPosition(board);
 
 			if (Int32.TryParse(board.GameBoard[position.Row, position.Column], out int _))
 			{
 				board.GameBoard[position.Row, position.Column] = Marker;
-				
+
 			}
 			else
 			{
-				Console.WriteLine("This space is already occupied");
+				Console.WriteLine($"This space is already occupied, {Name}");
 				goto prompt;
 			}
 		}
