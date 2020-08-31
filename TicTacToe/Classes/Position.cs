@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TicTacToe.Classes
 {
-    class Position
-    {
+	class Position
+	{
 		public int Row { get; set; }
 		public int Column { get; set; }
 

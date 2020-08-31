@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TicTacToe.Classes
 {
-    class Board
-    {
+	class Board
+	{
 		/// <summary>
 		/// Tic Tac Toe Gameboard states
 		/// </summary>
@@ -21,19 +21,16 @@ namespace TicTacToe.Classes
 		{
 
 			//TODO: Output the board to the console
-			
 
-			for (int i = 0; i<3; i++)
-            {
+			for (int i = 0; i < 3; i++)
+			{
 				string line = "";
-				for (int j = 0; j < 3; j++)
+				for (int x = 0; x < 3; x++)
 				{
-					line = $"{line} | {GameBoard[i,j]}";
+					line = $"{line} | {GameBoard[i, x]}";
 				}
 				Console.WriteLine($"{line} |");
 			}
-			
-		
 		}
 	}
 }
